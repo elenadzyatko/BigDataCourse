@@ -1,0 +1,14 @@
+ADD JAR /opt/cloudera/parcels/CDH/lib/hive/lib/hive-serde.jar;
+USE mf_dzyatko;
+DROP TABLE IF EXISTS logs_optimized;
+CREATE EXTERNAL TABLE logs_optimized (
+ip STRING,
+timestamp STRING,
+request STRING,
+size INT,
+response_code INT,
+useragent STRING
+)
+STORED AS orc
+    TBLPROPERTIES ("orc.compress" = "NONE" )
+LOCATION '/data/user_logs/user_logs_optimized_M';

@@ -1,0 +1,29 @@
+CREATE TABLE `sqoop_db.person_details_dev`(
+  `person_id` int, 
+  `card_number` string, 
+  `card_cvv` string, 
+  `card_valid_to` string, 
+  `person_details_cd` string, 
+  `person_details_md` string)
+COMMENT 'Imported by sqoop on 2019/08/22 06:20:50'
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe' 
+WITH SERDEPROPERTIES ( 
+  'field.delim'=',', 
+  'line.delim'='\n', 
+  'serialization.format'=',') 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  'hdfs://virtual-master.bigdatateam.ru:8020/user/hive/warehouse/sqoop_db.db/person_details_dev'
+TBLPROPERTIES (
+  'COLUMN_STATS_ACCURATE'='true', 
+  'numFiles'='1', 
+  'numRows'='0', 
+  'rawDataSize'='0', 
+  'totalSize'='5840', 
+  'transient_lastDdlTime'='1566456849')
+WARN: The method class org.apache.commons.logging.impl.SLF4JLogFactory#release() was invoked.
+WARN: Please see http://www.slf4j.org/codes.html#release for an explanation.

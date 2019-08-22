@@ -1,0 +1,14 @@
+sqoop import \
+ --connect "jdbc:mysql://virtual-client:3306/moon_db" \
+ --username sqoop \
+ --password sqoop \
+ --table person_details \
+ --target-dir /user/mf_dzyatko/sqoop_test_data/person_details_dev \
+ --num-mappers 1 \
+ --fields-terminated-by ','\
+ --hive-import \
+ --null-string '\\N' \
+ --null-non-string '\\N' \
+ --hive-overwrite \
+ --hive-table sqoop_db.person_details_dev \
+ --hive-drop-import-delims

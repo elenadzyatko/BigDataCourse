@@ -65,6 +65,7 @@ INSERT OVERWRITE TABLE logs_S PARTITION(date)
 SELECT ip,timestamp, request, size,response_code, useragent, substr(timestamp, 1,8) AS date
 from logs_raw_S;
 
+
 DROP TABLE IF EXISTS logs_optimized_S;
 CREATE EXTERNAL TABLE logs_optimized_S (
 ip STRING,
